@@ -1,12 +1,12 @@
-const Film = ({selectedFilm, onCharactersClick})=>{
+const Film = ({selectedFilm})=>{
 
     if (!selectedFilm) {
         return null
     }
 
-    const handleClick = ()=>{
-        onCharactersClick(selectedFilm.people)
-    }
+    // const handleClick = ()=>{
+    //     onCharactersClick(selectedFilm.people)
+    // }
 
     return (
         <div>
@@ -17,7 +17,7 @@ const Film = ({selectedFilm, onCharactersClick})=>{
             <p>Director: {selectedFilm.director}</p>
             <p>Producer: {selectedFilm.producer}</p>
             <p>Running Time: {selectedFilm.running_time}mins</p>
-            <button onClick={handleClick}>Film Characters</button>
+            <button>Film Characters</button>
         </div>
     )
 
