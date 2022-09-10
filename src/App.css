@@ -1,4 +1,19 @@
-.App {
+body {
+  background-image: url("https://steamuserimages-a.akamaihd.net/ugc/1758073114103109159/20B042641BF6359FEE0D9E96CE7D62205EB179A3/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+img {
+  border: 2px solid black;
+  box-shadow: 0px -5px 10px 0px rgba(0, 0, 0, 0.5)
+}
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +50,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
