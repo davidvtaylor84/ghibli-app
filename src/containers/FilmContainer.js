@@ -6,6 +6,13 @@ const FilmContainer = ()=>{
 
     const[films, setFilms] = useState([])
     const[selectedFilmId, setSelectedFilmId] = useState('')
+
+    const[characters, setCharacters] = useState([])
+    const[selectedCharacters, setSelectedCharacters] = useState('')
+
+    useEffect(() =>{
+        getCharacters()
+    }, [])
     
     useEffect(() => {
         getFilms()
@@ -15,6 +22,16 @@ const FilmContainer = ()=>{
         fetch("https://ghibliapi.herokuapp.com/films/")
         .then(res => res.json())
         .then(filmData => setFilms(filmData))
+    }
+
+    const getCharacters = ()=> {
+        fetch("https://ghibliapi.herokuapp.com/people")
+        .then(res => res.json())
+        .then(characterData => setCharacters(characterData))
+    }
+
+    const onCharactersClick = (links) => {
+        characters.find(character. => links.url === selectedCharacters)
     }
 
     const onFilmSelect = id =>{
@@ -27,7 +44,7 @@ const FilmContainer = ()=>{
         <div>
             <h2>Welcome to this Ghibli app</h2>
             <FilmSelector films={films} onFilmSelect={onFilmSelect}/>
-            <Film selectedFilm={selectedFilm}/>
+            <Film selectedFilm={selectedFilm} onCharactersClick={onCharactersClick}/>
         </div>
     )
 
