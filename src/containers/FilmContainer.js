@@ -1,10 +1,11 @@
 import React,{useState, useEffect} from "react";
 import FilmSelector from "../components/FilmSelector";
+import Film from "../components/Film";
 
 const FilmContainer = ()=>{
 
     const[films, setFilms] = useState([])
-    // const[selectedFilmId, setSelectedFilmId] = useEffect('')
+    const[selectedFilmId, setSelectedFilmId] = useState('')
     
     useEffect(() => {
         getFilms()
@@ -16,10 +17,17 @@ const FilmContainer = ()=>{
         .then(filmData => setFilms(filmData))
     }
 
+    const onFilmSelect = id =>{
+        setSelectedFilmId(id)
+    }
+
+    const selectedFilm = films.find(film => film.id === selectedFilmId)
+
     return(
         <div>
             <h2>Welcome to this Ghibli app</h2>
-            <FilmSelector films={films}/>
+            <FilmSelector films={films} onFilmSelect={onFilmSelect}/>
+            <Film selectedFilm={selectedFilm}/>
         </div>
     )
 
