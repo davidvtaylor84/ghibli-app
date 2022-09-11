@@ -1,18 +1,19 @@
 import React,{useState, useEffect} from "react";
 import FilmSelector from "../components/FilmSelector";
 import Film from "../components/Film";
+import Header from "../components/Header";
 
 const FilmContainer = ()=>{
 
     const[films, setFilms] = useState([])
     const[selectedFilmId, setSelectedFilmId] = useState('')
 
-    // const[characters, setCharacters] = useState([])
-    // const[selectedCharacters, setSelectedCharacters] = useState('')
+    const[characters, setCharacters] = useState([])
+    const[selectedCharacters, setSelectedCharacters] = useState('')
 
-    // useEffect(() =>{
-    //     getCharacters()
-    // }, [])
+    useEffect(() =>{
+        getCharacters()
+    }, [])
     
     useEffect(() => {
         getFilms()
@@ -24,13 +25,17 @@ const FilmContainer = ()=>{
         .then(filmData => setFilms(filmData))
     }
 
-    // const getCharacters = ()=> {
-    //     fetch("https://ghibliapi.herokuapp.com/people")
-    //     .then(res => res.json())
-    //     .then(characterData => setCharacters(characterData))
-    // }
+    const getCharacters = ()=> {
+        fetch("https://ghibliapi.herokuapp.com/people")
+        .then(res => res.json())
+        .then(characterData => setCharacters(characterData))
+    }
 
-    // const onCharactersClick = () => {}
+    const onCharactersClick = (list) => {
+        const theseCharacters = characters.filter(character => list == character.url)
+        return setSelectedCharacters(theseCharacters)
+    }
+
 
     const onFilmSelect = id =>{
         setSelectedFilmId(id)
@@ -40,9 +45,9 @@ const FilmContainer = ()=>{
 
     return(
         <div>
-            <h2>Welcome to this Ghibli app</h2>
+            <Header/>
             <FilmSelector films={films} onFilmSelect={onFilmSelect}/>
-            <Film selectedFilm={selectedFilm}/>
+            <Film selectedFilm={selectedFilm} onCharactersClick={onCharactersClick}/>
         </div>
     )
 
