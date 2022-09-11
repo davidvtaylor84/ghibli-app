@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import FilmSelector from "../components/FilmSelector";
 import Film from "../components/Film";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const FilmContainer = ()=>{
 
@@ -31,10 +32,11 @@ const FilmContainer = ()=>{
         .then(characterData => setCharacters(characterData))
     }
 
-    const onCharactersClick = (list) => {
-        const theseCharacters = characters.filter(character => list == character.url)
-        return setSelectedCharacters(theseCharacters)
-    }
+    // const onCharactersClick = (list) => {
+    //     const theseCharacters = characters.filter(character => list == character.url)
+    //     console.log(theseCharacters)
+    //     return setSelectedCharacters(theseCharacters)
+    // }
 
 
     const onFilmSelect = id =>{
@@ -47,7 +49,8 @@ const FilmContainer = ()=>{
         <div>
             <Header/>
             <FilmSelector films={films} onFilmSelect={onFilmSelect}/>
-            <Film selectedFilm={selectedFilm} onCharactersClick={onCharactersClick}/>
+            <Film selectedFilm={selectedFilm}/>
+            <Footer/>
         </div>
     )
 
