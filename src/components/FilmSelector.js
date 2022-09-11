@@ -6,6 +6,8 @@ const FilmSelector=({films, onFilmSelect})=>{
     }
 
     return (
+        <div className="selector">
+        <p>Select film:</p>
         <select defaultValue="" onChange={handleChange}>
             <option value="" disabled>Choose a Ghibli film</option>{
                 films.map( film => {
@@ -15,6 +17,7 @@ const FilmSelector=({films, onFilmSelect})=>{
                 })
             }
         </select>
+        </div>
     )
 }
 
