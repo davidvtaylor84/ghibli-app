@@ -1,10 +1,10 @@
 const FavouriteFilms = ({films, onFilmSelect}) => {
 
-  const favourites = films.filter(film => film.isfavourite)
+  const favourites = films.filter(film => film.isFavourite)
 
   return (
     <>
-    {/* <h3>My Favourite Ghibli Films</h3> */}
+    <h3>My Favourite Ghibli Films</h3>
     <ul>
       {favourites.map(film => {
           return (

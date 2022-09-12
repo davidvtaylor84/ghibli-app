@@ -42,12 +42,12 @@ const FilmContainer = ()=>{
     // }
 
     const onFavouriteToggle = (id) => {
-        const updatedFilms = films.map((film) => {
+        const favouriteFilms = films.map((film) => {
           return film.id === id
             ? {...film, isFavourite: !film.isFavourite}
             : film
         })
-        setFilms(updatedFilms)
+        setFilms(favouriteFilms)
       }
 
     const onFilmSelect = id =>{
